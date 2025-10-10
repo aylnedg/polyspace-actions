@@ -21,24 +21,24 @@ jobs:
 
     steps:
     - name: Check out repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
     - name: Generate compilation database
       uses: cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
     - name: Analyze pull request
-      uses: polyspace-actions/polyspace-bug-finder@24.2.0
+      uses: polyspace-actions/polyspace-bug-finder@25.1.0
       with:
         compilation-database-file: compile_commands.json
         checkers-file: checkers.xml
         sarif-file: results.sarif
 
     - name: Annotate the findings to the commit
-      uses: polyspace-actions/polyspace-findings@24.2.0
+      uses: polyspace-actions/polyspace-findings@25.1.0
       with:
         sarif-file: results.sarif
 ```
 ## polyspace-findings
 
-When you define your workflow in the `.github/workflows` folder of your repository, specify this action as `polyspace-actions/polyspace-findings@24.2.0`.
+When you define your workflow in the `.github/workflows` folder of your repository, specify this action as `polyspace-actions/polyspace-findings@25.1.0`.
 
 The action accepts these inputs. Unless otherwise specified, the inputs are optional.
 

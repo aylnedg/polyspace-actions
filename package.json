@@ -1,6 +1,6 @@
 {
   "name": "polyspace-actions",
-  "version": "24.2.1",
+  "version": "25.1.0",
   "description": "Run Polyspace via Github Actions.",
   "scripts": {
     "build:polyspace-bug-finder": "ncc build lib/polyspaceBugFinderWrapper.ts -o dist/polyspaceBugFinder",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
-    "@actions/github": "^5.1.1",
+    "@actions/github": "^6.0.1",
     "@vercel/ncc": "^0.36.1",
     "concurrently": "^7.6.0",
     "parse-diff": "^0.11.1",
@@ -35,8 +35,8 @@
   "devDependencies": {
     "@types/chai": "^4.3.20",
     "@types/chai-as-promised": "^7.1.8",
-    "@types/mocha": "^10.0.9",
-    "@types/node": "^20.16.11",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.19.19",
     "@types/rewire": "^2.5.30",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -44,9 +44,9 @@
     "chai-as-promised": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "mocha": "^10.7.3",
+    "mocha": "^10.8.2",
     "rewire": "^6.0.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.9.3"
   }
 }

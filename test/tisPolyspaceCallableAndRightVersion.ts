@@ -1,4 +1,4 @@
-// Copyright 2023-2024 The MathWorks, Inc.
+// Copyright 2023-2025 The MathWorks, Inc.
 
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
@@ -6,7 +6,7 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 const rewire  = require('rewire');
-import { isPolyspaceCallableAndRightVersion } from '../lib/isPolyspaceCallableAndRightVersion';
+import { isPolyspaceCallableAndRightVersion, errorIfPolyspaceNotRightVersion } from '../lib/isPolyspaceCallableAndRightVersion';
 const rewiredModule = rewire('../lib/isPolyspaceCallableAndRightVersion.ts');
 
 
@@ -39,5 +39,18 @@ describe('isPolyspaceCallableAndRightVersion', () => {
     it('releaseMismatch empty', () => {
         const ver = rewiredModule.__get__('matchConfigureStringVersion')('');
         chai.expect(ver === undefined, 'We expect no version to be found in an empty string.').to.equal(true);
+    });
+
+    it('releaseUndefined', async () => {
+        await expect(errorIfPolyspaceNotRightVersion(undefined)).to.eventually.be.rejectedWith(Error);
+    });
+    it('releaseTooOld 2024a', async () => {
+        await expect(errorIfPolyspaceNotRightVersion('R2024a')).to.eventually.be.rejectedWith(Error);
+    });
+    it('releaseExact 2024b', async() => {
+        await expect(errorIfPolyspaceNotRightVersion('R2024b')).to.eventually.become(undefined);
+    });
+    it('releaseFuture 2025a', async () => {
+        await expect(errorIfPolyspaceNotRightVersion('R2025a')).to.eventually.become(undefined);
     });
 });

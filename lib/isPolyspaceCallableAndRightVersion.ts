@@ -1,4 +1,4 @@
-// Copyright 2023-2024 The MathWorks, Inc.
+// Copyright 2023-2025 The MathWorks, Inc.
 
 import { spawnProcess } from './spawnProcess';
 import { getCwd } from './getCwd';
@@ -57,9 +57,14 @@ export async function isPolyspaceCallableAndRightVersion(installationFolder: str
     if (prc) {
         version = matchConfigureStringVersion(prc);
     }
+
+    errorIfPolyspaceNotRightVersion(version);
+}
+
+export async function errorIfPolyspaceNotRightVersion(version: string | undefined) {
     if (!version) { // Stdout of polyspace-configure -h is empty or too old for version string.
-        throw new Error(`Polyspace version could not be found. Expected version ${getTargetVersion()}`);
-    } else if (version !== getTargetVersion()) {
-        throw new Error(`Polyspace version ${version} not compatible with chosen Polyspace Actions. Expected Polyspace version ${getTargetVersion()}.`);
+        throw new Error(`Unable to find Polyspace version. Expected version ${getTargetVersion()} or later.`);
+    } else if (version < getTargetVersion()) {
+        throw new Error(`Polyspace version ${version} incompatible with chosen Polyspace actions. Expected version ${getTargetVersion()} or later.`);
     }
 }
