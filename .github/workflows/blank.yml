@@ -5,7 +5,7 @@ author: 'MathWorks'
 description: 'Run a Polyspace Bug Finder Server analysis, save results to a SARIF file, and optionally upload to Polyspace Access.'
 inputs:
     polyspace-installation-folder:
-      description: 'Polyspace installation folder path. 
+      description: 'C:\Program Files\Polyspace\R2024b\bin. 
       required: false
     working-directory:
       description: 'C:\Users\labuser\Documents\Polyspace_Workspace\ci_deneme\Module_1\BF_Result.
