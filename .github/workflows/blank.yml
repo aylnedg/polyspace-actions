@@ -6,10 +6,9 @@ description: 'Run a Polyspace Bug Finder Server analysis, save results to a SARI
 inputs:
     polyspace-installation-folder:
       description: 'Polyspace installation folder path. 
-      If you add the path of the Polyspace executables to your PATH environment variable, you do not need to specify the installation folder path.'
       required: false
     working-directory:
-      description: 'Working directory folder path. Specify the path relative to GITHUB_WORKSPACE.
+      description: 'C:\Users\labuser\Documents\Polyspace_Workspace\ci_deneme\Module_1\BF_Result.
        If you do not specify a working directory, Polyspace uses GITHUB_WORKSPACE.'
       required: false
 
